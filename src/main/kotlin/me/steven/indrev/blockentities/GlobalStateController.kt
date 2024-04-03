@@ -19,9 +19,7 @@ import net.minecraft.world.World
 import java.util.function.LongFunction
 
 object GlobalStateController {
-    @Environment(EnvType.CLIENT)
     val chunksToUpdate: Long2ObjectMap<MutableSet<BlockPos>> = Long2ObjectOpenHashMap()
-    @Environment(EnvType.CLIENT)
     val workingStateTracker = Long2BooleanOpenHashMap()
 
     @Environment(EnvType.CLIENT)
