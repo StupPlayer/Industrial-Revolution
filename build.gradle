@@ -192,20 +192,6 @@ publishing {
             }
         }
     }
-
-    // select the repositories you want to publish to
-    repositories {
-        maven {
-            url "https://maven.cafeteria.dev/releases"
-            credentials {
-                username = project.property("mcdUsername")
-                password = project.property("mcdPassword")
-            }
-            authentication {
-                basic(BasicAuthentication)
-            }
-        }
-    }
 }
 
 compileKotlin.kotlinOptions.jvmTarget = "17"

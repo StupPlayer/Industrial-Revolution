@@ -122,7 +122,6 @@ public class WCustomTabPanel extends WPanel {
         tabRibbon.setSize(x, TAB_HEIGHT);
     }
 
-    @Environment(EnvType.CLIENT)
     @Override
     public void addPainters() {
         super.addPainters();
@@ -278,7 +277,6 @@ public class WCustomTabPanel extends WPanel {
                 if (!this.tooltip.isEmpty()) {
                     //noinspection Convert2Lambda
                     tooltip = new Consumer<TooltipBuilder>() {
-                        @Environment(EnvType.CLIENT)
                         @Override
                         public void accept(TooltipBuilder builder) {
                             builder.add(WCustomTabPanel.Tab.Builder.this.tooltip.toArray(new Text[0]));
@@ -304,7 +302,6 @@ public class WCustomTabPanel extends WPanel {
             return true;
         }
 
-        @Environment(EnvType.CLIENT)
         @Override
         public InputResult onClick(int x, int y, int button) {
             super.onClick(x, y, button);
@@ -320,7 +317,6 @@ public class WCustomTabPanel extends WPanel {
             return InputResult.PROCESSED;
         }
 
-        @Environment(EnvType.CLIENT)
         @Override
         public void onKeyPressed(int ch, int key, int modifiers) {
             if (isActivationKey(ch)) {
@@ -328,7 +324,6 @@ public class WCustomTabPanel extends WPanel {
             }
         }
 
-        @Environment(EnvType.CLIENT)
         @Override
         public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY) {
             TextRenderer renderer = MinecraftClient.getInstance().textRenderer;
@@ -382,7 +377,6 @@ public class WCustomTabPanel extends WPanel {
     /**
      * Internal background painter instances for tabs.
      */
-    @Environment(EnvType.CLIENT)
     final static class Painters {
         static final BackgroundPainter SELECTED_TAB = BackgroundPainter.createLightDarkVariants(
                 BackgroundPainter.createNinePatch(new Identifier("indrev", "textures/gui/selected_light.png")).setTopPadding(2),

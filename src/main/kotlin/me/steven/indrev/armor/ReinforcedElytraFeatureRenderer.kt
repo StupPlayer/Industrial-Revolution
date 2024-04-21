@@ -20,7 +20,6 @@ import net.minecraft.client.util.math.MatrixStack
 import net.minecraft.entity.EquipmentSlot
 import net.minecraft.entity.LivingEntity
 
-@Environment(EnvType.CLIENT)
 class ReinforcedElytraFeatureRenderer<T : LivingEntity, M : EntityModel<T>>(
     context: FeatureRendererContext<T, M>,
     loader: EntityModelLoader

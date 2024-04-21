@@ -158,7 +158,6 @@ class RancherScreenHandler(syncId: Int, playerInventory: PlayerInventory, ctx: S
         }
     }
 
-    @Environment(EnvType.CLIENT)
     override fun addPainters() {
         val offset = 178 - rootPanel.width
         (rootPanel as WCustomTabPanel).setForceBackgroundPainter(
