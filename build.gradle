@@ -195,14 +195,16 @@ publishing {
 
     // select the repositories you want to publish to
     repositories {
-        maven {
-            url "https://maven.cafeteria.dev/releases"
-            credentials {
-                username = project.property("mcdUsername")
-                password = project.property("mcdPassword")
-            }
-            authentication {
-                basic(BasicAuthentication)
+        if (project.hasProperty("mcdUsername") && project.hasProperty("mcdPassword")) {
+            maven {
+                url "https://maven.cafeteria.dev/releases"
+                credentials {
+                    username = project.property("mcdUsername")
+                    password = project.property("mcdPassword")
+                }
+                authentication {
+                    basic(BasicAuthentication)
+                }
             }
         }
     }

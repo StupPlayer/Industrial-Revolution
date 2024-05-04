@@ -55,7 +55,6 @@ class MachineRegistry(private val key: String, val upgradeable: Boolean = true, 
     private val blocks: MutableMap<Tier, Block> = EnumMap(Tier::class.java)
     val blockEntities: MutableMap<Tier, BlockEntityType<*>> = EnumMap(Tier::class.java)
 
-    @Environment(EnvType.CLIENT)
     val modelProvider: MutableMap<Tier, (String) -> UnbakedModel?> = EnumMap(Tier::class.java)
 
     fun blockProvider(blockProvider: MachineRegistry.(Tier) -> Block): MachineRegistry {
@@ -504,7 +503,7 @@ class MachineRegistry(private val key: String, val upgradeable: Boolean = true, 
             .defaultEnergyProvider()
             .defaultFluidStorageProvider()
             .defaultModelProvider()
-        
+
         val ELECTROLYTIC_SEPARATOR_REGISTRY = MachineRegistry("electrolytic_separator", true)
             .blockProvider { tier ->
                 ElectrolyticSeparatorBlock(this, SETTINGS(), tier)
