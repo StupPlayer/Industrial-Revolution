@@ -39,7 +39,6 @@ open class IRGuiScreenHandler(
 
     }
 
-    @Environment(EnvType.CLIENT)
     override fun addPainters() {
         super.addPainters()
         val offset = 170 - rootPanel.width

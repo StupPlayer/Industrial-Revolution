@@ -55,7 +55,6 @@ class MachineRegistry(private val key: String, val upgradeable: Boolean = true, 
     private val blocks: MutableMap<Tier, Block> = EnumMap(Tier::class.java)
     val blockEntities: MutableMap<Tier, BlockEntityType<*>> = EnumMap(Tier::class.java)
 
-    @Environment(EnvType.CLIENT)
     val modelProvider: MutableMap<Tier, (String) -> UnbakedModel?> = EnumMap(Tier::class.java)
 
     fun blockProvider(blockProvider: MachineRegistry.(Tier) -> Block): MachineRegistry {
@@ -162,14 +161,12 @@ class MachineRegistry(private val key: String, val upgradeable: Boolean = true, 
     }
 
     @Suppress("UNCHECKED_CAST")
-    @Environment(EnvType.CLIENT)
     fun <T : BlockEntity> registerBlockEntityRenderer(renderer: () -> BlockEntityRenderer<T>) {
         blockEntities.forEach { (_, type) ->
             BlockEntityRendererRegistry.register(type as BlockEntityType<T>) { _ -> renderer() }
         }
     }
 
-    @Environment(EnvType.CLIENT)
     fun setRenderLayer(layer: RenderLayer) {
         blocks.forEach { (_, block) -> BlockRenderLayerMap.INSTANCE.putBlock(block, layer) }
     }

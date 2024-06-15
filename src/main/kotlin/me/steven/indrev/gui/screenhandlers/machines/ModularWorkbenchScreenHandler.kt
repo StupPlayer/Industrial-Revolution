@@ -250,7 +250,6 @@ class ModularWorkbenchScreenHandler(syncId: Int, playerInventory: PlayerInventor
         panel.add(moduleToInstall, 3.0, 3.5)
     }
 
-    @Environment(EnvType.CLIENT)
     override fun addPainters() {
         val offset = 178 - rootPanel.width
         (rootPanel as WCustomTabPanel).setForceBackgroundPainter(
