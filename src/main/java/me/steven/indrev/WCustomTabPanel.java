@@ -302,6 +302,7 @@ public class WCustomTabPanel extends WPanel {
             return true;
         }
 
+        @Environment(EnvType.CLIENT)
         @Override
         public InputResult onClick(int x, int y, int button) {
             super.onClick(x, y, button);
