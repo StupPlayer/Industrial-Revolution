@@ -78,7 +78,7 @@ class FarmerBlockEntity(tier: Tier, pos: BlockPos, state: BlockState)
             val item = stack.item
             val isCropBlock = block is CropBlock || block is StemBlock || block is SweetBerryBushBlock || block is CocoaBlock || block is NetherWartBlock
             when {
-                item is BoneMealItem && isCropBlock && (block as? Fertilizable)?.isFertilizable(world, pos, state, false) == true && block.canGrow(world, world.random, pos, state) -> {
+                item is BoneMealItem && isCropBlock && (block as? Fertilizable)?.isFertilizable(world, pos, state, false) == true && block.canGrow(world, world.random, pos, state) && stack.count > 1 -> {
                     stack.decrement(1)
                     block.grow(world, world.random, pos, state)
                     world.syncWorldEvent(2005, pos, 0)
